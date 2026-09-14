@@ -1,5 +1,5 @@
 import { icons } from './icons.js';
-import { renderDoodle, renderAvatarAccent, renderTileAccent } from './decoration.js';
+import { renderDoodle, renderAvatarAccent } from './decoration.js';
 
 export function escapeHtml(value) {
   return String(value)
@@ -97,21 +97,15 @@ const UNIT = { sm: 1, wide: 2, tall: 1, full: 4 };
 
 function buildAnchorTile(member) {
   if (member.instagram) {
-    const hasPhoto = Boolean(member.photo);
+    // Deliberately no photo here, even when the member has one — the
+    // Instagram tile is icon + handle only, full stop. The photo still
+    // shows in the rail avatar and the directory card.
     return {
       size: 'lg',
       tag: 'a',
       href: `https://instagram.com/${member.instagram}`,
       ariaLabel: `${member.name} on Instagram, @${member.instagram}`,
-      // A real uploaded photo stays visible unconditionally — mobile has no
-      // hover, and a member who bothered to add a photo should have it seen
-      // there too. Without one, the initials avatar instead only blooms in
-      // on hover (desktop-only delight; touch devices never see it, and the
-      // tile is already complete without it).
-      className: `tile-anchor${hasPhoto ? ' has-photo' : ' has-reveal'}`,
-      bg: hasPhoto
-        ? `${avatarMarkup(member, { fullBleed: true })}<div class="tile-scrim"></div>`
-        : `${renderTileAccent()}<div class="tile-reveal">${avatarMarkup(member, { fullBleed: true })}<div class="tile-scrim"></div></div>`,
+      className: 'tile-anchor',
       chipColor: 'var(--c-instagram)',
       icon: icons.instagram,
       title: 'Instagram',
@@ -130,16 +124,22 @@ function buildAnchorTile(member) {
 function buildPostAnchorTiles(member, site) {
   const tiles = [];
 
+  // Save-contact and Call are merged into one tile: the vCard download
+  // already carries the phone number, so a separate tel: quick-dial tile
+  // next to it was redundant. The number itself is shown as this tile's
+  // meta line instead of the generic "Add to phone".
   tiles.push({
     size: 'wide',
     tag: 'a',
     href: 'contact.vcf',
     download: true,
-    ariaLabel: `Save ${member.name}'s contact details`,
+    ariaLabel: member.phone
+      ? `Save ${member.name}'s contact details, ${member.phone}`
+      : `Save ${member.name}'s contact details`,
     treatment: 'solid',
     icon: icons.save,
     title: 'Save contact',
-    meta: 'Add to phone',
+    meta: member.phone || 'Add to phone',
   });
 
   if (member.email) {
@@ -156,19 +156,6 @@ function buildPostAnchorTiles(member, site) {
   }
 
   const smTiles = [];
-
-  if (member.phone) {
-    smTiles.push({
-      size: 'sm',
-      tag: 'a',
-      href: `tel:${member.phone.replace(/[^\d+]/g, '')}`,
-      ariaLabel: `Call ${member.name} on ${member.phone}`,
-      chipColor: 'var(--c-phone)',
-      icon: icons.phone,
-      title: 'Call',
-      meta: member.phone,
-    });
-  }
 
   if (member.whatsapp) {
     smTiles.push({
