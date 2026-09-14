@@ -19,24 +19,23 @@ export function initials(name) {
   return (words[0][0] + last[0]).toUpperCase();
 }
 
-// Club identity, not individual accent, drives the avatar backdrop for
-// clubs with a defined theme (small, pre-cropped 50:85 JPEGs in
-// assets/clubs/ — see project-meta/DECISIONS.md D18). Any club without an
-// entry here just keeps the existing per-member accent gradient.
+// Club identity drives the whole page's background (see clubBackgroundUrl
+// below) — the avatar itself stays on the per-member accent gradient
+// regardless of club, so it doesn't fight the page backdrop for attention.
 const CLUB_BACKGROUNDS = {
   'Cultural Society': 'cultural-society.jpg',
   Media: 'media.jpg',
   'Student Council': 'student-council.jpg',
 };
 
+export function clubBackgroundUrl(member, assetsPath = '../assets/') {
+  const file = CLUB_BACKGROUNDS[member.club];
+  return file ? `${assetsPath}clubs/${file}` : null;
+}
+
 export function avatarMarkup(member, { fullBleed = false, assetsPath = '../assets/' } = {}) {
   if (member.photo) {
     return `<img class="${fullBleed ? 'tile-bg' : 'avatar-img'}" src="${assetsPath}photos/${escapeHtml(member.photo)}" alt="" />`;
-  }
-  const clubBg = CLUB_BACKGROUNDS[member.club];
-  if (clubBg) {
-    const cls = fullBleed ? 'avatar-fallback avatar-fallback--tile avatar-club' : 'avatar-fallback avatar-club';
-    return `<div class="${cls}" style="background-image:url('${assetsPath}clubs/${clubBg}')"><span>${escapeHtml(initials(member.name))}</span></div>`;
   }
   const cls = fullBleed ? 'avatar-fallback avatar-fallback--tile' : 'avatar-fallback';
   const gradient = 'background:linear-gradient(135deg, var(--primary), color-mix(in oklab, var(--primary) 55%, #000))';
@@ -297,6 +296,13 @@ export function renderMemberPage(member, site, css) {
   const bioHtml = member.bio ? `<p class="bio">${escapeHtml(member.bio)}</p>` : '';
   const roleLine = [member.role, member.club].filter(Boolean).join(' · ');
 
+  // The club photo is the page's own backdrop, not a decoration layered on
+  // top of the default surface — the scallop/blob flourishes exist to give
+  // the flat accent wash some life, which a real photo doesn't need.
+  const clubBg = clubBackgroundUrl(member);
+  const bodyClass = clubBg ? ' class="has-club-bg"' : '';
+  const bodyStyle = `--primary:${escapeHtml(member.accent)};--primary-foreground:${escapeHtml(member.primaryForeground)}${clubBg ? `;--club-bg:url('${clubBg}')` : ''}`;
+
   const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -304,9 +310,9 @@ export function renderMemberPage(member, site, css) {
 ${renderHead(member, site)}
 <style>${css}</style>
 </head>
-<body data-surface="${escapeHtml(member.surface)}" style="--primary:${escapeHtml(member.accent)};--primary-foreground:${escapeHtml(member.primaryForeground)}">
+<body data-surface="${escapeHtml(member.surface)}"${bodyClass} style="${bodyStyle}">
 <div class="page">
-${renderDoodle()}
+${clubBg ? '' : renderDoodle()}
 <div class="rail rail-center">
 <div class="avatar">${avatarMarkup(member)}</div>
 <h1 class="name">${escapeHtml(member.name)}</h1>

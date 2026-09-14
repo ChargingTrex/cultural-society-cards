@@ -138,6 +138,12 @@ a { color: inherit; }
 [data-surface="frosted"] {
   background: var(--background);
 }
+[data-surface="frosted"].has-club-bg {
+  background-image: var(--club-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 [data-surface="frosted"] .tile {
   background: color-mix(in srgb, var(--card) 74%, transparent);
   backdrop-filter: blur(16px) saturate(140%);
@@ -302,6 +308,19 @@ a { color: inherit; }
   color: var(--card-foreground);
   margin: 0;
 }
+
+/* The club backgrounds are moody, dark photos — dark ink text (the default,
+   sized for the flat --background token) fails contrast directly on top of
+   them. Scoped to frosted specifically: that's the only surface the photo
+   actually renders on (see .has-club-bg above) — paper/dither keep their
+   flat background, so their text must stay dark ink or it'd be invisible. */
+[data-surface="frosted"].has-club-bg .name,
+[data-surface="frosted"].has-club-bg .role-line,
+[data-surface="frosted"].has-club-bg .bio {
+  color: #fff;
+  text-shadow: 0 1px 8px rgb(0 0 0 / .45);
+}
+[data-surface="frosted"].has-club-bg .role-line { color: rgb(255 255 255 / .82); }
 
 /* Grid */
 
