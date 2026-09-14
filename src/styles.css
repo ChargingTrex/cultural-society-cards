@@ -511,12 +511,16 @@ a.tile:focus-visible .tile-arrow { opacity: .4; }
 :where(.card):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 
 .card-avatar {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: var(--radius-inner);
   overflow: hidden;
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
 }
-.card-avatar .avatar-fallback { font-size: 1.75rem; }
+.card-avatar .avatar-fallback { font-size: 2.25rem; }
+@media (min-width: 640px) {
+  .card-avatar { width: 112px; height: 112px; }
+  .card-avatar .avatar-fallback { font-size: 2.5rem; }
+}
 .card-name { font-weight: 600; font-size: var(--t-title); }
 .card-role { font-size: var(--t-meta); color: var(--muted-foreground); }
