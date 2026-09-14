@@ -267,3 +267,13 @@ average hue 214.7°, so the exact complement is 34.7°, not 26.5°. Changed to
 true complement), which also improves contrast (10.4:1 vs. 9.07:1). Updated
 `site.accent` in `members.json` to match, since the site itself is titled
 "Cultural Society" and the two were already meant to be the same color.
+
+### D24 — Cultural Society moved off orange to coral-red
+Asked for a different color than orange for the blue background, while
+keeping the same warm-against-cool logic (not a literal blue-on-blue
+accent, which would fail the whole point of D16/D20 — an accent has to
+separate from its own backdrop, not match it). **Decided (2026-09-14):**
+`#F2704A`, a coral-red (~14°) — meaningfully different from the previous
+`#F4B661` (~35°, a orange/gold) rather than a small tweak, while staying on
+the same side of the color wheel as blue's true complement. Contrast
+6.4:1. `site.accent` updated to match, same reasoning as D23.
