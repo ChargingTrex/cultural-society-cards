@@ -14,7 +14,7 @@
       "club": "Cultural Society",
       "batch": "SCDS '28",
       "bio": "",
-      "photo": "",
+      "photo": "arun.jpg",
       "instagram": "whatnot.arun",
       "phone": "+91 99405 27740",
       "whatsapp": "919940527740",
@@ -24,50 +24,53 @@
       "slug": "amarnath",
       "name": "Amarnath Reddy S",
       "role": "Committee Member",
-      "club": "Cultural Society",
+      "club": "Media",
       "batch": "SCDS '29",
       "bio": "",
-      "photo": "",
+      "photo": "amarnath.jpg",
       "instagram": "amarnath_1564",
       "phone": "+91 81850 81851",
       "whatsapp": "918185081851",
       "email": "amarnathreddy.s-29@scds.saiuniversity.edu.in"
     },
     {
-      "slug": "sample-three",
-      "name": "Nadia Placeholder",
+      "slug": "banu",
+      "name": "Banu",
       "role": "Media Coordinator",
       "club": "Media",
+      "photo": "banu.jpg",
       "batch": "SCDS '28",
       "bio": "Sample entry — delete before launch. Shows the Media club background.",
       "instagram": "sample.media",
       "phone": "+91 90000 00002",
       "whatsapp": "919000000002",
-      "email": "sample.three@scds.saiuniversity.edu.in"
+      "email": "banu@scds.saiuniversity.edu.in"
     },
     {
-      "slug": "sample-four",
-      "name": "Rohan Placeholder",
+      "slug": "mirudula",
+      "name": "Mirudula",
       "role": "General Secretary",
       "club": "Student Council",
+      "photo": "mirudula.jpg",
       "batch": "SCDS '27",
       "bio": "Sample entry — delete before launch. Shows the Student Council background.",
       "instagram": "sample.council",
       "phone": "+91 90000 00003",
       "whatsapp": "919000000003",
-      "email": "sample.four@scds.saiuniversity.edu.in"
+      "email": "mirudula@scds.saiuniversity.edu.in"
     },
     {
-      "slug": "sample-one",
-      "name": "Priya Placeholder",
+      "slug": "shrivatsav",
+      "name": "Shrivatsav",
       "role": "Events Lead",
       "club": "Dance Club",
+      "photo": "shrivatsav.jpg",
       "batch": "SCDS '27",
       "bio": "Sample entry — delete before launch. Shows how a filled-in bio sits in the rail.",
       "instagram": "sample.handle",
       "phone": "+91 90000 00000",
       "whatsapp": "919000000000",
-      "email": "sample.one@scds.saiuniversity.edu.in",
+      "email": "shrivatsav@scds.saiuniversity.edu.in",
       "links": [
         {
           "label": "Portfolio",
@@ -77,14 +80,15 @@
       ]
     },
     {
-      "slug": "sample-two",
-      "name": "Karthik Placeholder",
+      "slug": "anish",
+      "name": "Anish",
       "role": "Design Lead",
       "club": "Fine Arts Club",
+      "photo": "anish.jpg",
       "batch": "SCDS '28",
       "bio": "Sample entry — delete before launch. This one has no Instagram, to prove the anchor-tile fallback works.",
       "phone": "+91 90000 00001",
-      "email": "sample.two@scds.saiuniversity.edu.in"
+      "email": "anish@scds.saiuniversity.edu.in"
     }
   ]
 }
