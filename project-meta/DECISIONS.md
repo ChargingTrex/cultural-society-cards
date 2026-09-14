@@ -256,3 +256,14 @@ took the exact 180°-rotated complement, rather than eyeballing:
 - Student Council: avg hue 360°/0° (red) -> complement 180° (cyan-teal) — changed from `#2E9E8A` (165°) to `#2AA9C7` (~193°), closer to the true complement and further from Media's green so the two clubs stay visually distinct
 All three re-verified for contrast (6.2-7.4:1 against dark ink, comfortably
 past 4.5:1).
+
+### D23 — Cultural Society's accent refined to the exact sampled complement
+D22's Cultural Society value (`#F4A261`, hue 26.5°) was carried over from an
+earlier eyeballed choice rather than actually recomputed like Media/Student
+Council were. Asked specifically to find blue's true complement.
+**Decided (2026-09-14):** re-sampled `cultural-society.jpg` precisely —
+average hue 214.7°, so the exact complement is 34.7°, not 26.5°. Changed to
+`#F4B661` (same saturation/lightness as the old value, hue corrected to the
+true complement), which also improves contrast (10.4:1 vs. 9.07:1). Updated
+`site.accent` in `members.json` to match, since the site itself is titled
+"Cultural Society" and the two were already meant to be the same color.

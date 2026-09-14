@@ -23,14 +23,14 @@ export function initials(name) {
 // one accent plus one background image — a person is distinguished by their
 // name and photo, not by a personal color. Each accent is the background
 // photo's own true color-wheel complement (hue sampled from the actual
-// image, not eyeballed — see project-meta/DECISIONS.md D22):
-//   Cultural Society — blue backdrop (~215°)   -> orange (~35°)
-//   Media            — pink backdrop (~335°)   -> jade green (~155°)
-//   Student Council   — red backdrop (~360°/0°) -> cyan-teal (~190°)
+// image, not eyeballed — see project-meta/DECISIONS.md D22/D23):
+//   Cultural Society — blue backdrop (214.7°)  -> orange (34.7°)
+//   Media            — pink backdrop (335°)    -> jade green (155°)
+//   Student Council   — red backdrop (360°/0°)  -> cyan-teal (~190°)
 // A club with no entry here falls back to site.accent (see build.js) — no
 // per-member override exists any more.
 const CLUB_THEMES = {
-  'Cultural Society': { bg: 'cultural-society.jpg', accent: '#F4A261' },
+  'Cultural Society': { bg: 'cultural-society.jpg', accent: '#F4B661' },
   Media: { bg: 'media.jpg', accent: '#34B87F' },
   'Student Council': { bg: 'student-council.jpg', accent: '#2AA9C7' },
 };
