@@ -14,7 +14,7 @@
       "club": "Cultural Society",
       "batch": "SCDS '28",
       "bio": "",
-      "photo": "arun.jpg",
+      "photo": "arun.png",
       "instagram": "whatnot.arun",
       "phone": "+91 99405 27740",
       "whatsapp": "919940527740",
@@ -24,10 +24,10 @@
       "slug": "amarnath",
       "name": "Amarnath Reddy S",
       "role": "Committee Member",
-      "club": "Media",
+      "club": "Cultural Society",
       "batch": "SCDS '29",
       "bio": "",
-      "photo": "amarnath.jpg",
+      "photo": "amarnath.png",
       "instagram": "amarnath_1564",
       "phone": "+91 81850 81851",
       "whatsapp": "918185081851",
@@ -37,9 +37,9 @@
       "slug": "banu",
       "name": "Banu",
       "role": "Committee Member",
-      "club": "Media",
-      "batch": "SCDS '28",
-      "photo": "banu.jpg",
+      "club": "Cultural Society",
+      "batch": "SCDS '29",
+      "photo": "banu.png",
       "phone": "+91 90000 00004",
       "whatsapp": "919000000004",
       "email": "banu@scds.saiuniversity.edu.in"
@@ -50,7 +50,7 @@
       "role": "Committee Member",
       "club": "Cultural Society",
       "batch": "SCDS '28",
-      "photo": "mirudula.jpg",
+      "photo": "mirudula.png",
       "phone": "+91 90000 00005",
       "whatsapp": "919000000005",
       "email": "mirudula@scds.saiuniversity.edu.in"
@@ -61,7 +61,7 @@
       "role": "Committee Member",
       "club": "Cultural Society",
       "batch": "SCDS '28",
-      "photo": "shrivatsav.jpg",
+      "photo": "shrivatsav.png",
       "phone": "+91 90000 00006",
       "whatsapp": "919000000006",
       "email": "shrivatsav@scds.saiuniversity.edu.in"
@@ -72,10 +72,21 @@
       "role": "Committee Member",
       "club": "Cultural Society",
       "batch": "SCDS '28",
-      "photo": "anish.jpg",
+      "photo": "anish.png",
       "phone": "+91 90000 00007",
       "whatsapp": "919000000007",
       "email": "anish@scds.saiuniversity.edu.in"
+    },
+    {
+      "slug": "vaibhav",
+      "name": "B Vaibhav",
+      "role": "Committee Member",
+      "club": "Media",
+      "batch": "SCDS '29",
+      "photo": "uncool-vaibhav.png",
+      "phone": "+91 98401 89449",
+      "whatsapp": "919840189449",
+      "email": "vaibhav.b-29@scds.saiuniversity.edu.in"
     }
   ]
 }
