@@ -299,3 +299,36 @@ mobile, 400px desktop) on top of the row-span sizing, rather than raising
 ones further down the grid unrelated to this request. Save/Email necessarily
 grow to match since they share the anchor's two rows by design; Call/
 WhatsApp/Society do not.
+
+### D27 — Club logos on the Society tile; assets/ reorganized into named subfolders
+Asked to add the Student Council and Cultural Society crest logos "to the
+respective members," and to split assets into dedicated folders.
+**Decided (2026-09-14):**
+- `assets/photos/` renamed to `assets/profilepic/` (all path references in
+  `build.js`, `src/validate.js`, `src/page.js` updated — `og:image`,
+  validation's existence check, and `avatarMarkup`'s `<img src>` all point
+  here now).
+- New `assets/Logos/` holds `cultural-society.jpg` and `student-council.jpg`
+  — center-cropped square, resized to 240x240, compressed (20-27KB each).
+- The Society tile's chip now shows the actual club logo (`clubLogoUrl()` in
+  `src/page.js`) instead of the generic `icons.society` mark, for any member
+  whose club has one. No logo exists yet for Media, so Media members (and
+  any club without a logo) keep the generic icon — same graceful-fallback
+  pattern as the background/accent themes.
+- Verified the Student Council logo path with a temporary local-only club
+  reassignment (not committed) since no real member is in that club yet.
+- `assets/clubs/` (background photos) and the top-level `assets/` container
+  itself are unchanged.
+
+### D28 — SAIU logo in the directory header; header retitled "Student Committees"
+The directory page's header showed `site.title` ("Cultural Society"), which
+was accurate when this was a single-club site but is now misleading — the
+same directory lists Cultural Society, Media, and Student Council members
+together. **Decided (2026-09-14):** added the standalone SAIU starburst mark
+(cropped from the center of the org seals, background keyed from black to
+transparent, `assets/Logos/saiu.png`) above the header text, and replaced
+the `<h1>` with a literal "Student Committees" instead of `site.title` —
+scoped to `src/index.js`'s directory header only, not a `site.title` rename,
+since individual member pages' own `<title>`/meta tags and their Society
+tile's club label are already correct as-is (each shows that specific
+member's own club, not a generic site-wide label).

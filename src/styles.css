@@ -417,6 +417,18 @@ a.tile:active { transform: scale(.985); transition-duration: 90ms; }
 }
 .tile-chip svg { width: 20px; height: 20px; }
 
+.tile-chip-logo {
+  background: var(--card);
+  padding: 3px;
+  overflow: hidden;
+}
+.tile-chip-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .tile-arrow {
   position: absolute;
   top: var(--tile-pad);
@@ -534,6 +546,7 @@ a.tile:focus-visible .tile-arrow { opacity: .4; }
 }
 
 .directory-header { text-align: center; margin-bottom: var(--s-10); }
+.directory-logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: var(--s-3); }
 .directory-header .name { margin-bottom: var(--s-2); }
 
 .directory-grid {

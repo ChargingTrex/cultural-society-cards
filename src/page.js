@@ -44,9 +44,22 @@ export function clubBackgroundUrl(member, assetsPath = '../assets/') {
   return theme ? `${assetsPath}clubs/${theme.bg}` : null;
 }
 
+// Only two of the three themed clubs have a supplied logo yet (no Media
+// logo exists) — Society tile falls back to the generic icons.society mark
+// for anyone else, same as it always has.
+const CLUB_LOGOS = {
+  'Cultural Society': 'cultural-society.jpg',
+  'Student Council': 'student-council.jpg',
+};
+
+export function clubLogoUrl(member, assetsPath = '../assets/') {
+  const file = CLUB_LOGOS[member.club];
+  return file ? `${assetsPath}Logos/${file}` : null;
+}
+
 export function avatarMarkup(member, { fullBleed = false, assetsPath = '../assets/' } = {}) {
   if (member.photo) {
-    return `<img class="${fullBleed ? 'tile-bg' : 'avatar-img'}" src="${assetsPath}photos/${escapeHtml(member.photo)}" alt="" />`;
+    return `<img class="${fullBleed ? 'tile-bg' : 'avatar-img'}" src="${assetsPath}profilepic/${escapeHtml(member.photo)}" alt="" />`;
   }
   const cls = fullBleed ? 'avatar-fallback avatar-fallback--tile' : 'avatar-fallback';
   const gradient = 'background:linear-gradient(135deg, var(--primary), color-mix(in oklab, var(--primary) 55%, #000))';
@@ -209,6 +222,7 @@ function buildPostAnchorTiles(member, site) {
   const unitsBeforeSociety = tiles.reduce((sum, tile) => sum + UNIT[tile.size], 0);
   const societySize = unitsBeforeSociety % 4 === 2 ? 'wide' : 'full';
 
+  const logoUrl = clubLogoUrl(member);
   tiles.push({
     size: societySize,
     tag: 'a',
@@ -216,7 +230,8 @@ function buildPostAnchorTiles(member, site) {
     ariaLabel: `${member.club ?? site.title}, part of ${site.org}. View the full directory.`,
     treatment: 'wash',
     chipColor: 'var(--c-link)',
-    icon: icons.society,
+    chipClass: logoUrl ? ' tile-chip-logo' : '',
+    icon: logoUrl ? `<img src="${logoUrl}" alt="" />` : icons.society,
     title: member.club || site.title,
     meta: site.org,
   });
@@ -255,7 +270,7 @@ function renderTile(tile) {
   }
 
   const chip = tile.chipColor
-    ? `<span class="tile-chip" style="--chip-color:${tile.chipColor}">${tile.icon}</span>`
+    ? `<span class="tile-chip${tile.chipClass ?? ''}" style="--chip-color:${tile.chipColor}">${tile.icon}</span>`
     : '';
   const arrow = `<span class="tile-arrow">${icons.arrow}</span>`;
   const text = `<span class="tile-text"><span class="tile-title">${escapeHtml(tile.title)}</span><span class="tile-meta">${escapeHtml(tile.meta)}</span></span>`;
@@ -268,7 +283,7 @@ function renderTile(tile) {
 function renderHead(member, site) {
   const description = member.bio || `${member.role}, ${member.club ?? ''}, ${site.title} at ${site.org}`.replace(/, ,/g, ',');
   const pageUrl = `${site.baseUrl}/${member.slug}/`;
-  const ogImage = member.photo ? `\n<meta property="og:image" content="${site.baseUrl}/assets/photos/${member.photo}">` : '';
+  const ogImage = member.photo ? `\n<meta property="og:image" content="${site.baseUrl}/assets/profilepic/${member.photo}">` : '';
 
   return `<title>${escapeHtml(member.name)} — ${escapeHtml(member.role)}, ${escapeHtml(site.title)}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -85,7 +85,7 @@ export function validateMembers(data, { photosDir }) {
     }
 
     if (!isEmpty(member.photo) && !existsSync(join(photosDir, member.photo))) {
-      errors.push(`${name}: photo "${member.photo}" not found in assets/photos/`);
+      errors.push(`${name}: photo "${member.photo}" not found in assets/profilepic/`);
     }
 
     for (const link of member.links ?? []) {

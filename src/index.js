@@ -57,8 +57,9 @@ export function renderDirectoryPage(site, members, css, accentForeground) {
 <body data-surface="paper" style="--primary:${escapeHtml(site.accent)};--primary-foreground:${escapeHtml(accentForeground)}">
 <div class="directory">
 <header class="directory-header">
+<img class="directory-logo" src="assets/Logos/saiu.png" alt="" />
 <p class="role-line">${escapeHtml(site.org)}</p>
-<h1 class="name">${escapeHtml(site.title)}</h1>
+<h1 class="name">Student Committees</h1>
 </header>
 <ul class="directory-grid">
 ${cards}

@@ -9,7 +9,7 @@ import { renderDirectoryPage } from './src/index.js';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const distDir = join(root, 'dist');
-const photosDir = join(root, 'assets', 'photos');
+const photosDir = join(root, 'assets', 'profilepic');
 
 const data = JSON.parse(readFileSync(join(root, 'members.json'), 'utf8'));
 const { warnings } = validateMembers(data, { photosDir });

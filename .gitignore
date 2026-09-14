@@ -17,3 +17,9 @@ node_modules/
 /mirudula.png
 /shrivatsav.png
 /anish.png
+.DS_Store
+
+# Raw org logo sources — assets/Logos/*.{jpg,png} are the processed versions.
+/SAIU_LOGO.jpg
+/Cultural_Committiee.jpeg
+/Student_Government.jpeg
