@@ -42,12 +42,18 @@
       "club": "Dance Club",
       "batch": "SCDS '27",
       "accent": "#1E9E6A",
-      "bio": "Sample entry — delete before launch. Shows how a filled-in bio sits in the rail.",
+      "bio": "Sample entry — delete before launch. Shows how a filled-in bio sits in the rail. (handover test)",
       "instagram": "sample.handle",
       "phone": "+91 90000 00000",
       "whatsapp": "919000000000",
       "email": "sample.one@scds.saiuniversity.edu.in",
-      "links": [{ "label": "Portfolio", "url": "https://example.com", "size": "sm" }]
+      "links": [
+        {
+          "label": "Portfolio",
+          "url": "https://example.com",
+          "size": "sm"
+        }
+      ]
     },
     {
       "slug": "sample-two",
