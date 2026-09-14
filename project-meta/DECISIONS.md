@@ -291,3 +291,11 @@ tile accent sits at 28% opacity as a wash inside the Instagram tile
 fills the tile itself via `object-fit: cover`, so the blob would just be
 hidden underneath it. Verified the no-photo path with a temporary local-only
 edit (not committed) since every real member currently has a photo.
+
+### D26 — Instagram (anchor) tile enlarged
+**Decided (2026-09-14):** `.t-lg` gained an explicit `min-height` (340px
+mobile, 400px desktop) on top of the row-span sizing, rather than raising
+`grid-auto-rows` globally — that would have inflated every tile, including
+ones further down the grid unrelated to this request. Save/Email necessarily
+grow to match since they share the anchor's two rows by design; Call/
+WhatsApp/Society do not.

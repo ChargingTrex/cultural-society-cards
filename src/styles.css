@@ -374,7 +374,8 @@ a { color: inherit; }
 .t-sm { grid-column: span 1; }
 .t-wide { grid-column: span 2; }
 .t-tall { grid-row: span 2; }
-.t-lg { grid-column: span 2; grid-row: span 2; }
+.t-lg { grid-column: span 2; grid-row: span 2; min-height: 340px; }
+@media (min-width: 640px) { .t-lg { min-height: 400px; } }
 .t-full { grid-column: 1 / -1; }
 
 /* Tile anatomy */
