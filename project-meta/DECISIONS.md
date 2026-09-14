@@ -332,3 +332,15 @@ scoped to `src/index.js`'s directory header only, not a `site.title` rename,
 since individual member pages' own `<title>`/meta tags and their Society
 tile's club label are already correct as-is (each shows that specific
 member's own club, not a generic site-wide label).
+
+### D29 — Fixed a real overlap bug D26's enlarged anchor tile introduced
+D26 gave `.t-lg` an explicit `min-height` (400px desktop) without checking
+it against the desktop grid's own row sizing, which was a *fixed* `168px`
+(not `minmax`). A 2-row-span tile needing 400px when its allocated area was
+only 168*2+16=352px doesn't grow its row tracks — CSS Grid just lets it
+overflow past its allocated area, visually overlapping the next row (Call/
+WhatsApp), which is exactly what shipped. **Decided (2026-09-14):** changed
+desktop `grid-auto-rows: 168px` to `grid-auto-rows: minmax(168px, auto)`,
+matching how mobile was already written — rows now grow to fit whatever's
+actually inside them instead of silently overflowing. Caught from a live
+screenshot, not synthetic testing.
