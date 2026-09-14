@@ -357,6 +357,19 @@ a { color: inherit; }
 
 /* Grid */
 
+/* An outer "window" frame around the whole tile grid — separates the tiles
+   from the page backdrop (which, on a themed club page, is a full-bleed
+   photo) as one cohesive unit, with its own gentle hover response. */
+.grid-window {
+  background: color-mix(in srgb, var(--card) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card) 45%, transparent);
+  border-radius: calc(var(--radius) + var(--s-4));
+  padding: var(--s-4);
+  box-shadow: var(--shadow-rest);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.grid-window:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
 .grid {
   list-style: none;
   margin: 0;

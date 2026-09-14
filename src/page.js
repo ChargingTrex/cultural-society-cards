@@ -334,10 +334,12 @@ ${clubBg ? '' : renderDoodle()}
 <p class="role-line">${escapeHtml(roleLine)}</p>
 ${bioHtml}
 </div>
+<div class="grid-window">
 <ul class="grid">
 ${anchorHtml}
 ${tilesHtml}
 </ul>
+</div>
 </div>
 </body>
 </html>

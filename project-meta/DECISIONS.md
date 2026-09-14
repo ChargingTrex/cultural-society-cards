@@ -344,3 +344,14 @@ desktop `grid-auto-rows: 168px` to `grid-auto-rows: minmax(168px, auto)`,
 matching how mobile was already written — rows now grow to fit whatever's
 actually inside them instead of silently overflowing. Caught from a live
 screenshot, not synthetic testing.
+
+### D30 — Outer "window" frame around the member page's tile grid
+Asked for "a bigger window card with hover effect containing all the cards
+and elements" — confirmed scope (member page, wraps the whole tile grid,
+subtle lift-on-hover) before building rather than guessing. **Decided
+(2026-09-14):** `.grid-window` in `src/page.js`/`src/styles.css` wraps the
+`<ul class="grid">`, giving the whole tile set one shared translucent card
+frame (separates it from the page backdrop, which on a themed club page is
+a full-bleed photo) with the same hover-lift treatment individual tiles
+already had. Pushed `amarnath`'s page to 20.2KB (0.2KB over budget) — left
+as-is per the earlier explicit instruction to not block on the KB budget.
