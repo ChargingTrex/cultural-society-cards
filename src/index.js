@@ -13,9 +13,13 @@ function sortMembers(members, roleOrder) {
   }).map(({ member }) => member);
 }
 
+// Each card carries its own member's accent as a local CSS var — the page
+// itself stays neutral (site.accent, on <body>), but the avatar underneath
+// is what should read as "that member's color" on a page listing everyone.
 function renderCard(member) {
   const roleLine = [member.role, member.club].filter(Boolean).join(' · ');
-  return `<li><a class="card" href="${escapeHtml(member.slug)}/" aria-label="${escapeHtml(member.name)}, ${escapeHtml(roleLine)}">
+  const style = `--primary:${escapeHtml(member.accent)};--primary-foreground:${escapeHtml(member.primaryForeground)}`;
+  return `<li><a class="card" style="${style}" href="${escapeHtml(member.slug)}/" aria-label="${escapeHtml(member.name)}, ${escapeHtml(roleLine)}">
 <div class="card-avatar">${avatarMarkup(member, { assetsPath: 'assets/photos/' })}</div>
 <span class="card-name">${escapeHtml(member.name)}</span>
 <span class="card-role">${escapeHtml(roleLine)}</span>

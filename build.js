@@ -75,11 +75,11 @@ for (const member of data.members) {
     warnings.push(message);
   }
 
-  built.push({ member, bytes });
+  built.push({ member, resolved, bytes });
 }
 
 const { ink: siteForeground } = pickForeground(data.site.accent);
-const directoryHtml = renderDirectoryPage(data.site, data.members, css, siteForeground);
+const directoryHtml = renderDirectoryPage(data.site, built.map((b) => b.resolved), css, siteForeground);
 if (directoryHtml.includes('<script')) {
   throw new Error('directory page contains a <script> tag');
 }
