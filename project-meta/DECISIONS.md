@@ -403,24 +403,3 @@ tablet step are untouched.
 `--t-label` (the role/club line) 0.75rem->0.875rem. Bio text size left
 alone — wasn't mentioned and enlarging body copy has a real legibility
 tradeoff at longer lengths that name/role/avatar don't.
-
-### D35 — Reprocessed profile photos after a teammate's PR reverted them to raw transparent PNGs
-A merge from a collaborator (`y-bow`, PR #1) redesigned the directory card
-to a full-bleed photo with a bottom vignette (`.card-avatar` now `inset:0`
-behind a `linear-gradient(...,.95)` scrim) — a real improvement, kept as-is.
-It also replaced `assets/profilepic/*.jpg` (flattened, cropped, compressed —
-D-whatever originally did this) back with the raw uncropped transparent-
-background cutout PNGs, and added a 7th real member (`vaibhav`, using
-`uncool-vaibhav.png` — a second file, `vaibhav.png`, exists unused; left as
-the collaborator's choice rather than second-guessing which crop they
-preferred). Against the new full-bleed card, a transparent PNG's empty
-pixels show the card's own `background: var(--primary)` (the member's
-accent color) bleeding through around each person's silhouette instead of a
-clean photo. **Decided (2026-09-14):** re-ran the same flatten-to-white +
-crop-to-50:85 + compress pipeline on all 7 (including vaibhav), updated
-`members.json`'s `photo` fields back to `.jpg`, removed the raw PNGs. Also
-did **not** revert this same PR's club reassignments (`amarnath`/`banu` back
-to Cultural Society, `vaibhav` new in Media) — a collaborator's own edit to
-real roster data is authoritative, not something to second-guess from an
-earlier conversation's assumptions. All 7 real member pages now exceed the
-20KB budget (20.1-21.1KB) — left as-is per the standing instruction.
