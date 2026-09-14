@@ -95,8 +95,6 @@ account. `README.md` (CP8) should state this explicitly.
 
 ---
 
-## OPEN
-
 ### D17 — `site.baseUrl` set to the real GitHub Pages URL
 Supersedes O1. `BUILD-SPEC.md`'s seed data shipped a `CHANGEME` placeholder;
 printed QR codes are permanent, so generating or printing them (CP6) against
@@ -106,21 +104,6 @@ a placeholder would produce cards wrong from day one. **Decided
 generation and printing can now proceed against a real value; a custom
 domain (`BUILD-SPEC.md` §15 item 5) is still a separate, unaddressed
 improvement, not a blocker.
-
-### O2 — Frosted-surface contrast for the actual seed accent colors
-`DESIGN-SYSTEM.md` §10 flags frosted as the surface most likely to fail
-contrast, but the four seed accents (`#E4572E`, `#2E6BE4`, `#1E9E6A`,
-`#7B4BE4`) haven't been checked against both inks on that surface. **Blocks:**
-sign-off on CP2's swatch page; recommend checking at CP2 rather than waiting
-for the CP7 accessibility pass, since a failing accent means changing seed
-data (and re-touching D3-adjacent validation) rather than just CSS.
-
-### O3 — `backdrop-filter` cumulative cost on budget Android
-Each tile applies its own `backdrop-filter: blur(16px)` (`DESIGN-SYSTEM.md`
-§3); a page with 6-9 tiles applies that many independent blurs. The spec caps
-blur radius per tile but doesn't address compositing cost across many tiles.
-**Blocks:** final sign-off on the `frosted` surface for real low-end devices;
-verify at CP7's real-device pass, not from a desktop browser.
 
 ### D11 — Permalink convention: bare first-name slug, no prefix
 Asked to put the person's name in the permalink with a better convention than
@@ -184,13 +167,6 @@ running this session confirmed consent is in place for `arun`'s and
 `amarnath`'s real phone numbers to be published, ahead of the first public
 deploy. This clears the phone-number half of O4 specifically — it does not
 cover roles or photos, which are separate and still open below.
-
-### O4 — Roles and photos still unconfirmed
-Arun's and Amarnath's roles are guessed ("Committee Member") and no photos
-are supplied for any seed member. **Blocks:** printing, not building or
-deploying — the site can be fully built and deployed with placeholders (the
-generated initials avatar), but cards should not go to print until roles and
-photos are confirmed per member.
 
 ### D18 — Club identity (not individual accent) drives the avatar backdrop for three named clubs
 Asked to carry each club's own background image into the "profile pic" —
@@ -403,3 +379,29 @@ tablet step are untouched.
 `--t-label` (the role/club line) 0.75rem->0.875rem. Bio text size left
 alone — wasn't mentioned and enlarging body copy has a real legibility
 tradeoff at longer lengths that name/role/avatar don't.
+
+---
+
+## OPEN
+
+### O2 — Frosted-surface contrast for the actual seed accent colors
+`DESIGN-SYSTEM.md` §10 flags frosted as the surface most likely to fail
+contrast, but the four seed accents (`#E4572E`, `#2E6BE4`, `#1E9E6A`,
+`#7B4BE4`) haven't been checked against both inks on that surface. **Blocks:**
+sign-off on CP2's swatch page; recommend checking at CP2 rather than waiting
+for the CP7 accessibility pass, since a failing accent means changing seed
+data (and re-touching D3-adjacent validation) rather than just CSS.
+
+### O3 — `backdrop-filter` cumulative cost on budget Android
+Each tile applies its own `backdrop-filter: blur(16px)` (`DESIGN-SYSTEM.md`
+§3); a page with 6-9 tiles applies that many independent blurs. The spec caps
+blur radius per tile but doesn't address compositing cost across many tiles.
+**Blocks:** final sign-off on the `frosted` surface for real low-end devices;
+verify at CP7's real-device pass, not from a desktop browser.
+
+### O4 — Roles and photos still unconfirmed
+Arun's and Amarnath's roles are guessed ("Committee Member") and no photos
+are supplied for any seed member. **Blocks:** printing, not building or
+deploying — the site can be fully built and deployed with placeholders (the
+generated initials avatar), but cards should not go to print until roles and
+photos are confirmed per member.
