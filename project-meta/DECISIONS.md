@@ -377,3 +377,13 @@ only, not "below their profile pic" as asked. **Decided (2026-09-14):**
   logo's own white background.
 - Real member pages (arun, amarnath) now run 20.5-20.7KB, further past the
   20KB budget — left as-is per the standing instruction not to block on it.
+
+### D32 — Removed the under-avatar logo; Society tile drops "Sai University" to just the club name
+Follow-up correction to D31: the standalone logo under the avatar was
+removed entirely (the Society tile's own large logo fill is enough).
+**Decided (2026-09-14):** dropped the `<img class="club-logo">` under
+`.avatar-wrap`. `renderTile()` now only emits `.tile-meta` when `tile.meta`
+is non-empty (was always rendering it, even blank); the Society tile passes
+`meta: ''` whenever a logo exists, so it shows only the club name — already
+bottom-aligned via the existing `.tile-society-logo { justify-content:
+flex-end }` from D31, no further CSS change needed there.

@@ -238,7 +238,7 @@ function buildPostAnchorTiles(member, site) {
     chipColor: logoUrl ? null : 'var(--c-link)',
     icon: logoUrl ? '' : icons.society,
     title: member.club || site.title,
-    meta: site.org,
+    meta: logoUrl ? '' : site.org,
   });
 
   return tiles;
@@ -278,7 +278,8 @@ function renderTile(tile) {
     ? `<span class="tile-chip${tile.chipClass ?? ''}" style="--chip-color:${tile.chipColor}">${tile.icon}</span>`
     : '';
   const arrow = `<span class="tile-arrow">${icons.arrow}</span>`;
-  const text = `<span class="tile-text"><span class="tile-title">${escapeHtml(tile.title)}</span><span class="tile-meta">${escapeHtml(tile.meta)}</span></span>`;
+  const metaHtml = tile.meta ? `<span class="tile-meta">${escapeHtml(tile.meta)}</span>` : '';
+  const text = `<span class="tile-text"><span class="tile-title">${escapeHtml(tile.title)}</span>${metaHtml}</span>`;
   const bg = tile.bg ?? '';
   const downloadAttr = tile.download ? ' download' : '';
 
@@ -337,7 +338,6 @@ ${renderHead(member, site)}
 ${clubBg ? '' : renderDoodle()}
 <div class="rail rail-center">
 <div class="avatar-wrap">${renderAvatarAccent()}<div class="avatar">${avatarMarkup(member)}</div></div>
-${clubLogoUrl(member) ? `<img class="club-logo" src="${clubLogoUrl(member)}" alt="${escapeHtml(member.club)} logo" />` : ''}
 <h1 class="name">${escapeHtml(member.name)}</h1>
 <p class="role-line">${roleLineHtml}</p>
 ${bioHtml}
