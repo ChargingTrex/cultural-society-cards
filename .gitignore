@@ -8,3 +8,12 @@ node_modules/
 /Night.png
 /Night2.png
 /night1.png
+
+# Raw member photo sources (transparent cutouts) — assets/photos/*.jpg are
+# the processed, flattened, compressed versions actually used.
+/arun.png
+/amarnath.png
+/banu.png
+/mirudula.png
+/shrivatsav.png
+/anish.png

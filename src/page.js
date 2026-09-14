@@ -82,21 +82,6 @@ function pairSmallTiles(tiles) {
 
 const UNIT = { sm: 1, wide: 2, tall: 1, full: 4 };
 
-function countBlocks(tiles) {
-  let count = 0;
-  let i = 0;
-  while (i < tiles.length) {
-    if (tiles[i].size === 'sm') {
-      count += 1;
-      i += 2;
-    } else {
-      count += 1;
-      i += 1;
-    }
-  }
-  return count;
-}
-
 function buildAnchorTile(member) {
   if (member.instagram) {
     const hasPhoto = Boolean(member.photo);
@@ -214,11 +199,15 @@ function buildPostAnchorTiles(member, site) {
   const paired = pairSmallTiles(smTiles);
   tiles.push(...paired);
 
-  // DESIGN-SYSTEM.md §6.5's own reference table has even/odd backwards
-  // relative to its worked example and to §6.4's base-case diagram — both of
-  // which this formula matches. See DECISIONS.md D12.
-  const blocksAfterEmail = countBlocks(paired);
-  const societySize = blocksAfterEmail % 2 === 1 ? 'wide' : 'full';
+  // General rule: pick whichever Society size (wide=2 or full=4) brings the
+  // running total to a multiple of 4, so the last desktop row never falls
+  // short. D12's "blocksAfterEmail parity" version was a special case of
+  // this that silently assumed Save+Email always total a fixed 4 units —
+  // it breaks for a member with no email and no other contact tile at all
+  // (Save alone = 2 units). Every unit value here is even, so the running
+  // total before Society is always 0 or 2 mod 4 — never odd.
+  const unitsBeforeSociety = tiles.reduce((sum, tile) => sum + UNIT[tile.size], 0);
+  const societySize = unitsBeforeSociety % 4 === 2 ? 'wide' : 'full';
 
   tiles.push({
     size: societySize,

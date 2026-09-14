@@ -36,58 +36,42 @@
     {
       "slug": "banu",
       "name": "Banu",
-      "role": "Media Coordinator",
+      "role": "Committee Member",
       "club": "Media",
-      "photo": "banu.jpg",
       "batch": "SCDS '28",
-      "bio": "Sample entry — delete before launch. Shows the Media club background.",
-      "instagram": "sample.media",
-      "phone": "+91 90000 00002",
-      "whatsapp": "919000000002",
+      "photo": "banu.jpg",
+      "phone": "+91 90000 00004",
+      "whatsapp": "919000000004",
       "email": "banu@scds.saiuniversity.edu.in"
     },
     {
       "slug": "mirudula",
       "name": "Mirudula",
-      "role": "General Secretary",
-      "club": "Student Council",
+      "role": "Committee Member",
+      "batch": "SCDS '28",
       "photo": "mirudula.jpg",
-      "batch": "SCDS '27",
-      "bio": "Sample entry — delete before launch. Shows the Student Council background.",
-      "instagram": "sample.council",
-      "phone": "+91 90000 00003",
-      "whatsapp": "919000000003",
+      "phone": "+91 90000 00005",
+      "whatsapp": "919000000005",
       "email": "mirudula@scds.saiuniversity.edu.in"
     },
     {
       "slug": "shrivatsav",
       "name": "Shrivatsav",
-      "role": "Events Lead",
-      "club": "Dance Club",
+      "role": "Committee Member",
+      "batch": "SCDS '28",
       "photo": "shrivatsav.jpg",
-      "batch": "SCDS '27",
-      "bio": "Sample entry — delete before launch. Shows how a filled-in bio sits in the rail.",
-      "instagram": "sample.handle",
-      "phone": "+91 90000 00000",
-      "whatsapp": "919000000000",
-      "email": "shrivatsav@scds.saiuniversity.edu.in",
-      "links": [
-        {
-          "label": "Portfolio",
-          "url": "https://example.com",
-          "size": "sm"
-        }
-      ]
+      "phone": "+91 90000 00006",
+      "whatsapp": "919000000006",
+      "email": "shrivatsav@scds.saiuniversity.edu.in"
     },
     {
       "slug": "anish",
       "name": "Anish",
-      "role": "Design Lead",
-      "club": "Fine Arts Club",
-      "photo": "anish.jpg",
+      "role": "Committee Member",
       "batch": "SCDS '28",
-      "bio": "Sample entry — delete before launch. This one has no Instagram, to prove the anchor-tile fallback works.",
-      "phone": "+91 90000 00001",
+      "photo": "anish.jpg",
+      "phone": "+91 90000 00007",
+      "whatsapp": "919000000007",
       "email": "anish@scds.saiuniversity.edu.in"
     }
   ]
