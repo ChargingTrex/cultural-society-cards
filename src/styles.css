@@ -23,7 +23,7 @@
   --gap: 12px;
   --tile-pad: 16px;
   --chip: 40px;
-  --avatar: 88px;
+  --avatar: 108px;
   --chip-mix: 14%;
 
   --c-instagram: #E1306C;
@@ -48,7 +48,7 @@
 }
 
 @media (min-width: 640px) {
-  :root { --gap: 16px; --tile-pad: 20px; --avatar: 104px; }
+  :root { --gap: 16px; --tile-pad: 20px; --avatar: 128px; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -271,6 +271,15 @@ a { color: inherit; }
 .rail-center .avatar-wrap { margin-inline: auto; }
 @media (min-width: 960px) { .rail-center .avatar-wrap { margin-inline: 0; } }
 
+.club-logo {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin: 0 auto var(--s-3);
+}
+@media (min-width: 960px) { .club-logo { margin-inline: 0; } }
+
 /* The blob motif, reused as a prominent committee-colored accent rather
    than just a subtle page-corner wash — peeking out below the avatar, and
    standing in as the Instagram tile's own background when there's no real
@@ -464,6 +473,26 @@ a.tile:focus-visible .tile-arrow { opacity: .4; }
   border: 1px solid var(--primary-edge) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+}
+
+.tile-society-logo { justify-content: flex-end; }
+.tile-society-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--s-6);
+  opacity: .9;
+  z-index: 0;
+}
+.tile-society-logo .tile-text {
+  position: relative;
+  z-index: 1;
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+  border-radius: var(--radius-inner);
+  padding: var(--s-2) var(--s-3);
+  width: fit-content;
 }
 
 .tile-solid {

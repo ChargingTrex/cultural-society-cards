@@ -222,6 +222,10 @@ function buildPostAnchorTiles(member, site) {
   const unitsBeforeSociety = tiles.reduce((sum, tile) => sum + UNIT[tile.size], 0);
   const societySize = unitsBeforeSociety % 4 === 2 ? 'wide' : 'full';
 
+  // A club with a logo fills the whole Society tile with it (large, behind
+  // the wash tint) rather than a small chip icon — the chip is dropped
+  // entirely in that case, since a tiny duplicate of the same mark next to
+  // the big one would be redundant.
   const logoUrl = clubLogoUrl(member);
   tiles.push({
     size: societySize,
@@ -229,9 +233,10 @@ function buildPostAnchorTiles(member, site) {
     href: '../',
     ariaLabel: `${member.club ?? site.title}, part of ${site.org}. View the full directory.`,
     treatment: 'wash',
-    chipColor: 'var(--c-link)',
-    chipClass: logoUrl ? ' tile-chip-logo' : '',
-    icon: logoUrl ? `<img src="${logoUrl}" alt="" />` : icons.society,
+    className: logoUrl ? 'tile-society-logo' : '',
+    bg: logoUrl ? `<img class="tile-society-bg" src="${logoUrl}" alt="" />` : '',
+    chipColor: logoUrl ? null : 'var(--c-link)',
+    icon: logoUrl ? '' : icons.society,
     title: member.club || site.title,
     meta: site.org,
   });
@@ -309,7 +314,9 @@ export function renderMemberPage(member, site, css) {
   const tilesHtml = postAnchor.map(renderTile).join('');
 
   const bioHtml = member.bio ? `<p class="bio">${escapeHtml(member.bio)}</p>` : '';
-  const roleLine = [member.role, member.club].filter(Boolean).join(' · ');
+  const roleLineHtml = member.club
+    ? `${escapeHtml(member.role)}<br />${escapeHtml(member.club)}`
+    : escapeHtml(member.role);
 
   // The club photo is the page's own backdrop, not a decoration layered on
   // top of the default surface — the scallop/blob flourishes exist to give
@@ -330,8 +337,9 @@ ${renderHead(member, site)}
 ${clubBg ? '' : renderDoodle()}
 <div class="rail rail-center">
 <div class="avatar-wrap">${renderAvatarAccent()}<div class="avatar">${avatarMarkup(member)}</div></div>
+${clubLogoUrl(member) ? `<img class="club-logo" src="${clubLogoUrl(member)}" alt="${escapeHtml(member.club)} logo" />` : ''}
 <h1 class="name">${escapeHtml(member.name)}</h1>
-<p class="role-line">${escapeHtml(roleLine)}</p>
+<p class="role-line">${roleLineHtml}</p>
 ${bioHtml}
 </div>
 <div class="grid-window">

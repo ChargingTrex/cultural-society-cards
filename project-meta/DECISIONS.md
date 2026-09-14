@@ -355,3 +355,25 @@ frame (separates it from the page backdrop, which on a themed club page is
 a full-bleed photo) with the same hover-lift treatment individual tiles
 already had. Pushed `amarnath`'s page to 20.2KB (0.2KB over budget) — left
 as-is per the earlier explicit instruction to not block on the KB budget.
+
+### D31 — Club logo moved below the avatar; role/club split to two lines; Society tile fills with the logo
+Follow-up correction: the club logo (D27) was in the Society tile's chip
+only, not "below their profile pic" as asked. **Decided (2026-09-14):**
+- Added a second `<img class="club-logo">` directly under `.avatar-wrap`,
+  independent of the Society tile's own logo (both now show it, in two
+  different presentations) — first attempt sat beside the avatar instead of
+  under it, since inline/inline-block elements in a centered rail flow
+  left-to-right when they fit on one line; fixed with `display: block` +
+  auto margins.
+- `--avatar` token raised 88px->108px (104px->128px desktop) — "make the
+  whole card bigger."
+- Role and club now render as two lines (`<br>` inside `.role-line`)
+  instead of one line joined by " · ".
+- Society tile: when a logo exists, it now fills the tile as a large
+  `object-fit: contain` background image (`.tile-society-bg`) instead of a
+  small chip icon — the chip is dropped entirely in that case (a tiny
+  duplicate next to a large one would be redundant); title/meta text sits
+  in a small pill (`.tile-society-logo .tile-text`) for legibility over the
+  logo's own white background.
+- Real member pages (arun, amarnath) now run 20.5-20.7KB, further past the
+  20KB budget — left as-is per the standing instruction not to block on it.
