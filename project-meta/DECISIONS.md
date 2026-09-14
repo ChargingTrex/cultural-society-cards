@@ -380,6 +380,47 @@ tablet step are untouched.
 alone — wasn't mentioned and enlarging body copy has a real legibility
 tradeoff at longer lengths that name/role/avatar don't.
 
+### D36 — Instagram tile: no photo, now square; Call merged into Save contact
+Applied site-wide, not scoped to one club (confirmed before building).
+**Decided (2026-09-15):**
+- The Instagram anchor tile no longer shows a photo under any circumstance
+  — icon + "Instagram" + handle only, even for members with a real photo.
+  Removed `has-photo`/`has-reveal`, `.tile-scrim`, `.tile-reveal`, and
+  `renderTileAccent()`/`BLOB_TILE` (dead code once nothing referenced them).
+  The photo still appears in the rail avatar and the directory card.
+- `.t-lg` changed from `min-height` (D26) to `aspect-ratio: 1/1` — a true
+  square regardless of viewport width, rather than "however tall D26's
+  fixed min-height happened to be." `grid-auto-rows`'s `minmax(_, auto)`
+  still absorbs whatever height the square ends up needing, same mechanism
+  that fixed the D29 overlap.
+- Call (the `tel:` tile) is gone; its number now shows as the Save-contact
+  tile's meta line instead of "Add to phone" (falls back to "Add to phone"
+  for a member with no phone). The vCard download already carries the same
+  number, so the direct tel: quick-dial was redundant with it. WhatsApp is
+  untouched and still its own tile; losing its former pairing partner (Call)
+  just means the existing pairing algorithm promotes it to `wide` on its
+  own, same as any other unpaired trailing `t-sm` — no code change needed.
+
+### D37 — Reverted D36's Call/Save merge; Instagram tile shrunk instead of squared
+**Decided (2026-09-15):** Superseded parts of D36 after seeing it live —
+Save-contact and Call read better as two separate tiles than one merged
+one, and once the Instagram tile lost its photo, forcing it to a full 2x2
+square (D36) left it looking oversized for icon+handle content it now
+holds.
+- Save-contact tile removed entirely. `icons.save` deleted (no longer
+  referenced by anything).
+- Call restored as its own `t-sm` tile (`tel:` link, phone number as meta),
+  in its original position ahead of WhatsApp in the small-tile pairing
+  order — WhatsApp pairs with it again instead of being promoted to `wide`.
+- `.t-lg` no longer forces `aspect-ratio: 1/1`. The photo-fallback anchor
+  (`.tile-image-only`, used by every member without an Instagram handle)
+  keeps the full 2x2 footprint — it's still a real photo tile. The
+  Instagram anchor specifically (`.tile-anchor` without `.tile-image-only`,
+  matched via `:has()` since the size class lives on the `<li>` and
+  `tile-anchor` on the element inside it) drops to `grid-row: span 1`, so
+  it now reads as a normal-height tile rather than empty space padded out
+  to a square.
+
 ---
 
 ## OPEN
@@ -405,24 +446,3 @@ are supplied for any seed member. **Blocks:** printing, not building or
 deploying — the site can be fully built and deployed with placeholders (the
 generated initials avatar), but cards should not go to print until roles and
 photos are confirmed per member.
-
-### D36 — Instagram tile: no photo, now square; Call merged into Save contact
-Applied site-wide, not scoped to one club (confirmed before building).
-**Decided (2026-09-15):**
-- The Instagram anchor tile no longer shows a photo under any circumstance
-  — icon + "Instagram" + handle only, even for members with a real photo.
-  Removed `has-photo`/`has-reveal`, `.tile-scrim`, `.tile-reveal`, and
-  `renderTileAccent()`/`BLOB_TILE` (dead code once nothing referenced them).
-  The photo still appears in the rail avatar and the directory card.
-- `.t-lg` changed from `min-height` (D26) to `aspect-ratio: 1/1` — a true
-  square regardless of viewport width, rather than "however tall D26's
-  fixed min-height happened to be." `grid-auto-rows`'s `minmax(_, auto)`
-  still absorbs whatever height the square ends up needing, same mechanism
-  that fixed the D29 overlap.
-- Call (the `tel:` tile) is gone; its number now shows as the Save-contact
-  tile's meta line instead of "Add to phone" (falls back to "Add to phone"
-  for a member with no phone). The vCard download already carries the same
-  number, so the direct tel: quick-dial was redundant with it. WhatsApp is
-  untouched and still its own tile; losing its former pairing partner (Call)
-  just means the existing pairing algorithm promotes it to `wide` on its
-  own, same as any other unpaired trailing `t-sm` — no code change needed.

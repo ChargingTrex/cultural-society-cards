@@ -124,24 +124,6 @@ function buildAnchorTile(member) {
 function buildPostAnchorTiles(member, site) {
   const tiles = [];
 
-  // Save-contact and Call are merged into one tile: the vCard download
-  // already carries the phone number, so a separate tel: quick-dial tile
-  // next to it was redundant. The number itself is shown as this tile's
-  // meta line instead of the generic "Add to phone".
-  tiles.push({
-    size: 'wide',
-    tag: 'a',
-    href: 'contact.vcf',
-    download: true,
-    ariaLabel: member.phone
-      ? `Save ${member.name}'s contact details, ${member.phone}`
-      : `Save ${member.name}'s contact details`,
-    treatment: 'solid',
-    icon: icons.save,
-    title: 'Save contact',
-    meta: member.phone || 'Add to phone',
-  });
-
   if (member.email) {
     tiles.push({
       size: 'wide',
@@ -156,6 +138,19 @@ function buildPostAnchorTiles(member, site) {
   }
 
   const smTiles = [];
+
+  if (member.phone) {
+    smTiles.push({
+      size: 'sm',
+      tag: 'a',
+      href: `tel:${member.phone.replace(/[^\d+]/g, '')}`,
+      ariaLabel: `Call ${member.name} on ${member.phone}`,
+      chipColor: 'var(--c-phone)',
+      icon: icons.phone,
+      title: 'Call',
+      meta: member.phone,
+    });
+  }
 
   if (member.whatsapp) {
     smTiles.push({

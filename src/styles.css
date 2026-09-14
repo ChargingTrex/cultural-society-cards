@@ -395,10 +395,12 @@ a { color: inherit; }
 .t-sm { grid-column: span 1; }
 .t-wide { grid-column: span 2; }
 .t-tall { grid-row: span 2; }
-/* Square, not just "2x2 tracks" — grid-auto-rows is minmax(_, auto), so a
-   square taller than 2 natural rows just grows the row rather than
-   overflowing (same reasoning as the D29 overlap fix). */
-.t-lg { grid-column: span 2; grid-row: span 2; aspect-ratio: 1 / 1; }
+.t-lg { grid-column: span 2; grid-row: span 2; }
+/* The Instagram anchor carries no photo (icon + handle only), so its 2x2
+   footprint is mostly empty air — shrink it to a single row. The photo
+   fallback anchor (.tile-image-only) keeps the full square. Size classes
+   live on the <li>, "image-only" on the <a>/<div> inside it, hence :has(). */
+.t-lg:has(.tile-anchor):not(:has(.tile-image-only)) { grid-row: span 1; }
 .t-full { grid-column: 1 / -1; }
 
 /* Tile anatomy */
