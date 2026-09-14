@@ -387,3 +387,12 @@ is non-empty (was always rendering it, even blank); the Society tile passes
 `meta: ''` whenever a logo exists, so it shows only the club name — already
 bottom-aligned via the existing `.tile-society-logo { justify-content:
 flex-end }` from D31, no further CSS change needed there.
+
+### D33 — Grid-window card 25% bigger on desktop only
+**Decided (2026-09-14):** scoped to the true desktop breakpoint (960px,
+where the rail becomes a sticky sidebar) rather than the 640px tablet step.
+`.page` max-width raised 1080px->1350px (25%) so there's room; `--gap`
+16px->20px, `--tile-pad` 20px->25px, and `grid-auto-rows` 168px->210px, all
+25% over their 640px values — scaled together so the card grows
+proportionally rather than just gaining whitespace. Mobile and the 640px
+tablet step are untouched.
