@@ -20,7 +20,7 @@ function renderCard(member) {
   const roleLine = [member.role, member.club].filter(Boolean).join(' · ');
   const style = `--primary:${escapeHtml(member.accent)};--primary-foreground:${escapeHtml(member.primaryForeground)}`;
   return `<li><a class="card" style="${style}" href="${escapeHtml(member.slug)}/" aria-label="${escapeHtml(member.name)}, ${escapeHtml(roleLine)}">
-<div class="card-avatar">${avatarMarkup(member, { assetsPath: 'assets/photos/' })}</div>
+<div class="card-avatar">${avatarMarkup(member, { assetsPath: 'assets/' })}</div>
 <span class="card-name">${escapeHtml(member.name)}</span>
 <span class="card-role">${escapeHtml(roleLine)}</span>
 </a></li>`;

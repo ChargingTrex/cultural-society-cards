@@ -1,3 +1,10 @@
 dist/
 qr/
 node_modules/
+
+# Raw source images — the processed, web-sized versions actually used are
+# in assets/clubs/; these full-resolution originals aren't needed at build
+# time and are too large to ship (4.5MB/864KB/228KB vs. a 20KB page budget).
+/Night.png
+/Night2.png
+/night1.png

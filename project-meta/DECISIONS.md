@@ -191,3 +191,28 @@ are supplied for any seed member. **Blocks:** printing, not building or
 deploying — the site can be fully built and deployed with placeholders (the
 generated initials avatar), but cards should not go to print until roles and
 photos are confirmed per member.
+
+### D18 — Club identity (not individual accent) drives the avatar backdrop for three named clubs
+Asked to carry each club's own background image into the "profile pic" —
+originally shared three reference images too large to ship (4.5MB/864KB/
+228KB against a 20KB page budget) and with no filesystem path from this
+session; the user then added the actual files to the project root
+(`Night.png`=blue, `Night2.png`=pink, `night1.png`=red).
+**Decided (2026-09-14):** center-cropped each to the 50:85 portrait ratio
+(matching the rail/directory avatar's own new ratio, see below), resized to
+300x510 (well past what a ~100-230px CSS box needs, but keeps the file
+sharp), and re-compressed as JPEG — landed at 2.6KB/4.3KB/2.0KB, comfortably
+inside budget. Stored at `assets/clubs/{cultural-society,media,student-council}.jpg`,
+mapped from `member.club` in `src/page.js`'s `CLUB_BACKGROUNDS`. A club not
+in that map (`Dance Club`, `Fine Arts Club` in the current roster) keeps the
+existing per-member accent gradient — no data required, no build failure.
+The large source PNGs stay on disk for reference but are gitignored, not
+shipped.
+
+### D19 — Avatar boxes (rail + directory) reshaped to a 50:85 portrait ratio
+Previously square (`--avatar` token, 88-104px). **Decided (2026-09-14):**
+`.avatar` and `.card-avatar` now use `aspect-ratio: 50 / 85` with the
+existing width tokens driving height automatically. The anchor tile's own
+photo/avatar-fallback treatment is explicitly excluded from this — it must
+stay filling its 2x2 square span, which the whole packing/assertion system
+in `src/page.js` depends on (DESIGN-SYSTEM.md §6.5).

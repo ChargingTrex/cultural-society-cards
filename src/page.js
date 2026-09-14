@@ -19,9 +19,24 @@ export function initials(name) {
   return (words[0][0] + last[0]).toUpperCase();
 }
 
-export function avatarMarkup(member, { fullBleed = false, assetsPath = '../assets/photos/' } = {}) {
+// Club identity, not individual accent, drives the avatar backdrop for
+// clubs with a defined theme (small, pre-cropped 50:85 JPEGs in
+// assets/clubs/ — see project-meta/DECISIONS.md D18). Any club without an
+// entry here just keeps the existing per-member accent gradient.
+const CLUB_BACKGROUNDS = {
+  'Cultural Society': 'cultural-society.jpg',
+  Media: 'media.jpg',
+  'Student Council': 'student-council.jpg',
+};
+
+export function avatarMarkup(member, { fullBleed = false, assetsPath = '../assets/' } = {}) {
   if (member.photo) {
-    return `<img class="${fullBleed ? 'tile-bg' : 'avatar-img'}" src="${assetsPath}${escapeHtml(member.photo)}" alt="" />`;
+    return `<img class="${fullBleed ? 'tile-bg' : 'avatar-img'}" src="${assetsPath}photos/${escapeHtml(member.photo)}" alt="" />`;
+  }
+  const clubBg = CLUB_BACKGROUNDS[member.club];
+  if (clubBg) {
+    const cls = fullBleed ? 'avatar-fallback avatar-fallback--tile avatar-club' : 'avatar-fallback avatar-club';
+    return `<div class="${cls}" style="background-image:url('${assetsPath}clubs/${clubBg}')"><span>${escapeHtml(initials(member.name))}</span></div>`;
   }
   const cls = fullBleed ? 'avatar-fallback avatar-fallback--tile' : 'avatar-fallback';
   const gradient = 'background:linear-gradient(135deg, var(--primary), color-mix(in oklab, var(--primary) 55%, #000))';

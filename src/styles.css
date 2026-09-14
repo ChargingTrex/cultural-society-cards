@@ -247,7 +247,8 @@ a { color: inherit; }
 
 .avatar {
   width: var(--avatar);
-  height: var(--avatar);
+  aspect-ratio: 50 / 85;
+  height: auto;
   border-radius: var(--radius-inner);
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / .06);
@@ -269,6 +270,13 @@ a { color: inherit; }
   color: var(--primary-foreground);
   font-family: var(--font-display);
   font-size: calc(var(--avatar) * 0.36);
+}
+
+.avatar-club {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / .5);
 }
 
 .name {
@@ -512,14 +520,15 @@ a.tile:focus-visible .tile-arrow { opacity: .4; }
 
 .card-avatar {
   width: 96px;
-  height: 96px;
+  aspect-ratio: 50 / 85;
+  height: auto;
   border-radius: var(--radius-inner);
   overflow: hidden;
   margin-bottom: var(--s-3);
 }
 .card-avatar .avatar-fallback { font-size: 2.25rem; }
 @media (min-width: 640px) {
-  .card-avatar { width: 112px; height: 112px; }
+  .card-avatar { width: 112px; }
   .card-avatar .avatar-fallback { font-size: 2.5rem; }
 }
 .card-name { font-weight: 600; font-size: var(--t-title); }
