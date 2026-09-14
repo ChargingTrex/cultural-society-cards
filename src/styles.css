@@ -537,6 +537,21 @@ a.tile:focus-visible .tile-arrow { opacity: .4; }
 .card:active { transform: scale(.985); transition-duration: 90ms; }
 :where(.card):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 
+/* A club with a defined theme puts its background photo on the card itself
+   — same image as that member's own page — so group identity carries into
+   the directory listing too, not just each person's own page. */
+.card-themed {
+  background-size: cover;
+  background-position: center;
+  border: none;
+}
+.card-themed .card-name,
+.card-themed .card-role {
+  color: #fff;
+  text-shadow: 0 1px 8px rgb(0 0 0 / .45);
+}
+.card-themed .card-role { color: rgb(255 255 255 / .82); }
+
 .card-avatar {
   width: 96px;
   aspect-ratio: 50 / 85;

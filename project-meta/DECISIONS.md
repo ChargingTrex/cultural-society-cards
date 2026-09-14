@@ -234,3 +234,13 @@ to fall back to instead, so those members now share the site default rather
 than keeping distinct individual colors. The `accent` field was removed from
 every member in `members.json` since it's no longer read; `site.accent`
 remains the only accent field in the data model.
+
+### D21 — Club background photo also applied to the directory-page card
+Asked to carry the club color scheme into "the person card," which on
+reflection means the directory listing's own card, not just each member's
+individual page. **Decided (2026-09-14):** `.card` uses the same
+`clubBackgroundUrl()` image as that member's own page when their club has a
+theme (`src/index.js`), with the same white-text-on-dark-photo treatment
+already used on the individual page (D19). Dance Club/Fine Arts Club cards
+stay plain (`background: var(--card)`) since neither has a defined theme —
+consistent with how their individual pages already behave.

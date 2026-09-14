@@ -1,4 +1,4 @@
-import { escapeHtml, avatarMarkup } from './page.js';
+import { escapeHtml, avatarMarkup, clubTheme, clubBackgroundUrl } from './page.js';
 
 // Sorted by site.roleOrder when present, otherwise left in members.json's own
 // order — a committee list has an intended order, never alphabetical by
@@ -16,10 +16,20 @@ function sortMembers(members, roleOrder) {
 // Each card carries its own member's accent as a local CSS var — the page
 // itself stays neutral (site.accent, on <body>), but the avatar underneath
 // is what should read as "that member's color" on a page listing everyone.
+// A club with a defined theme also puts its own background photo on the
+// card itself (same image as that member's individual page), so the group
+// identity carries into the directory listing, not just each own page.
 function renderCard(member) {
   const roleLine = [member.role, member.club].filter(Boolean).join(' · ');
-  const style = `--primary:${escapeHtml(member.accent)};--primary-foreground:${escapeHtml(member.primaryForeground)}`;
-  return `<li><a class="card" style="${style}" href="${escapeHtml(member.slug)}/" aria-label="${escapeHtml(member.name)}, ${escapeHtml(roleLine)}">
+  const theme = clubTheme(member);
+  const bgUrl = clubBackgroundUrl(member, 'assets/');
+  const themedClass = theme ? ' card-themed' : '';
+  const style = [
+    `--primary:${escapeHtml(member.accent)}`,
+    `--primary-foreground:${escapeHtml(member.primaryForeground)}`,
+    bgUrl ? `background-image:url('${bgUrl}')` : '',
+  ].filter(Boolean).join(';');
+  return `<li><a class="card${themedClass}" style="${style}" href="${escapeHtml(member.slug)}/" aria-label="${escapeHtml(member.name)}, ${escapeHtml(roleLine)}">
 <div class="card-avatar">${avatarMarkup(member, { assetsPath: 'assets/' })}</div>
 <span class="card-name">${escapeHtml(member.name)}</span>
 <span class="card-role">${escapeHtml(roleLine)}</span>
