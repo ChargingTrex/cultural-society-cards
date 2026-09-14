@@ -59,3 +59,18 @@ export function renderDoodle() {
     flourish(5, 26, 'doodle-bottom')
   );
 }
+
+// Same motif, used as a prominent (not-just-corner-wash) accent: tucked
+// behind the rail avatar, and as the Instagram tile's own background when
+// there's no real photo to show instead. Tinted by var(--primary), which by
+// now resolves to the member's committee color, not an individual one.
+const BLOB_AVATAR = [0.9, 1.15, 0.8, 1.1, 0.75, 1.2, 0.85, 1];
+const BLOB_TILE = [1, 0.82, 1.12, 0.78, 1.08, 0.86, 1.15, 0.8];
+
+export function renderAvatarAccent() {
+  return blob(BLOB_AVATAR, 200, 'blob-avatar');
+}
+
+export function renderTileAccent() {
+  return blob(BLOB_TILE, 280, 'blob-tile');
+}

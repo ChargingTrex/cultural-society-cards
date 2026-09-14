@@ -1,5 +1,5 @@
 import { icons } from './icons.js';
-import { renderDoodle } from './decoration.js';
+import { renderDoodle, renderAvatarAccent, renderTileAccent } from './decoration.js';
 
 export function escapeHtml(value) {
   return String(value)
@@ -98,7 +98,7 @@ function buildAnchorTile(member) {
       className: `tile-anchor${hasPhoto ? ' has-photo' : ' has-reveal'}`,
       bg: hasPhoto
         ? `${avatarMarkup(member, { fullBleed: true })}<div class="tile-scrim"></div>`
-        : `<div class="tile-reveal">${avatarMarkup(member, { fullBleed: true })}<div class="tile-scrim"></div></div>`,
+        : `${renderTileAccent()}<div class="tile-reveal">${avatarMarkup(member, { fullBleed: true })}<div class="tile-scrim"></div></div>`,
       chipColor: 'var(--c-instagram)',
       icon: icons.instagram,
       title: 'Instagram',
@@ -314,7 +314,7 @@ ${renderHead(member, site)}
 <div class="page">
 ${clubBg ? '' : renderDoodle()}
 <div class="rail rail-center">
-<div class="avatar">${avatarMarkup(member)}</div>
+<div class="avatar-wrap">${renderAvatarAccent()}<div class="avatar">${avatarMarkup(member)}</div></div>
 <h1 class="name">${escapeHtml(member.name)}</h1>
 <p class="role-line">${escapeHtml(roleLine)}</p>
 ${bioHtml}

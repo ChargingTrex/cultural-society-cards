@@ -277,3 +277,17 @@ separate from its own backdrop, not match it). **Decided (2026-09-14):**
 `#F4B661` (~35°, a orange/gold) rather than a small tweak, while staying on
 the same side of the color wheel as blue's true complement. Contrast
 6.4:1. `site.accent` updated to match, same reasoning as D23.
+
+### D25 — Blob motif reused as a prominent accent, not just a page-corner wash
+Asked to bring the existing blob+scallop decoration (D1's page-background
+flourish) into two more prominent spots: behind the rail avatar, and as the
+Instagram tile's own background. **Decided (2026-09-14):**
+`src/decoration.js` gained `renderAvatarAccent()`/`renderTileAccent()` —
+same smooth-blob-from-points generator, new placements, tinted by
+`var(--primary)` (the member's committee color, per D20). Avatar accent
+sits at 85% opacity peeking out from behind the photo (`.blob-avatar`);
+tile accent sits at 28% opacity as a wash inside the Instagram tile
+(`.blob-tile`), only when there's no real photo — a real photo already
+fills the tile itself via `object-fit: cover`, so the blob would just be
+hidden underneath it. Verified the no-photo path with a temporary local-only
+edit (not committed) since every real member currently has a photo.
