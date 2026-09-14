@@ -13,7 +13,6 @@
       "role": "Committee Member",
       "club": "Cultural Society",
       "batch": "SCDS '28",
-      "accent": "#F4A261",
       "bio": "",
       "photo": "",
       "instagram": "whatnot.arun",
@@ -27,7 +26,6 @@
       "role": "Committee Member",
       "club": "Cultural Society",
       "batch": "SCDS '29",
-      "accent": "#E85D7A",
       "bio": "",
       "photo": "",
       "instagram": "amarnath_1564",
@@ -41,7 +39,6 @@
       "role": "Media Coordinator",
       "club": "Media",
       "batch": "SCDS '28",
-      "accent": "#E8A33D",
       "bio": "Sample entry — delete before launch. Shows the Media club background.",
       "instagram": "sample.media",
       "phone": "+91 90000 00002",
@@ -54,7 +51,6 @@
       "role": "General Secretary",
       "club": "Student Council",
       "batch": "SCDS '27",
-      "accent": "#2E9E8A",
       "bio": "Sample entry — delete before launch. Shows the Student Council background.",
       "instagram": "sample.council",
       "phone": "+91 90000 00003",
@@ -67,13 +63,18 @@
       "role": "Events Lead",
       "club": "Dance Club",
       "batch": "SCDS '27",
-      "accent": "#1E9E6A",
       "bio": "Sample entry — delete before launch. Shows how a filled-in bio sits in the rail.",
       "instagram": "sample.handle",
       "phone": "+91 90000 00000",
       "whatsapp": "919000000000",
       "email": "sample.one@scds.saiuniversity.edu.in",
-      "links": [{ "label": "Portfolio", "url": "https://example.com", "size": "sm" }]
+      "links": [
+        {
+          "label": "Portfolio",
+          "url": "https://example.com",
+          "size": "sm"
+        }
+      ]
     },
     {
       "slug": "sample-two",
@@ -81,7 +82,6 @@
       "role": "Design Lead",
       "club": "Fine Arts Club",
       "batch": "SCDS '28",
-      "accent": "#7B4BE4",
       "bio": "Sample entry — delete before launch. This one has no Instagram, to prove the anchor-tile fallback works.",
       "phone": "+91 90000 00001",
       "email": "sample.two@scds.saiuniversity.edu.in"

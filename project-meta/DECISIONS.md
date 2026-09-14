@@ -216,3 +216,21 @@ existing width tokens driving height automatically. The anchor tile's own
 photo/avatar-fallback treatment is explicitly excluded from this — it must
 stay filling its 2x2 square span, which the whole packing/assertion system
 in `src/page.js` depends on (DESIGN-SYSTEM.md §6.5).
+
+### D20 — Per-member accent removed; accent is now a group (club) identity
+Supersedes the per-member accent tuning in D16/D18's samples. Asked to
+remove individual accent choice entirely and replace it with one shared
+color per club. **Decided (2026-09-14):** `member.accent` is no longer read
+anywhere — `src/page.js`'s `CLUB_THEMES` now pairs one accent with each
+club's background image, reusing the already contrast-verified colors from
+D18/D19's samples rather than picking new ones:
+- Cultural Society (blue backdrop) -> `#F4A261` warm orange
+- Media (pink backdrop) -> `#E8A33D` warm gold
+- Student Council (red backdrop) -> `#2E9E8A` teal, true color-wheel complement to red
+
+A club with no entry (`Dance Club`, `Fine Arts Club` in the current roster)
+falls back to `site.accent` uniformly — there is no more per-member override
+to fall back to instead, so those members now share the site default rather
+than keeping distinct individual colors. The `accent` field was removed from
+every member in `members.json` since it's no longer read; `site.accent`
+remains the only accent field in the data model.

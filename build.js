@@ -3,7 +3,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validateMembers, pickForeground } from './src/validate.js';
-import { renderMemberPage } from './src/page.js';
+import { renderMemberPage, clubTheme } from './src/page.js';
 import { renderVCard } from './src/vcard.js';
 import { renderDirectoryPage } from './src/index.js';
 
@@ -47,7 +47,7 @@ function resolveWhatsapp(member) {
 const built = [];
 
 for (const member of data.members) {
-  const accent = member.accent || data.site.accent;
+  const accent = clubTheme(member)?.accent || data.site.accent;
   const surface = member.surface || data.site.surface;
   const { ink: primaryForeground } = pickForeground(accent);
   const resolved = {

@@ -19,18 +19,28 @@ export function initials(name) {
   return (words[0][0] + last[0]).toUpperCase();
 }
 
-// Club identity drives the whole page's background (see clubBackgroundUrl
-// below) — the avatar itself stays on the per-member accent gradient
-// regardless of club, so it doesn't fight the page backdrop for attention.
-const CLUB_BACKGROUNDS = {
-  'Cultural Society': 'cultural-society.jpg',
-  Media: 'media.jpg',
-  'Student Council': 'student-council.jpg',
+// Group identity, not individual choice: everyone in a themed club shares
+// one accent plus one background image — a person is distinguished by their
+// name and photo, not by a personal color. Accent picked to sit against its
+// own background (contrast-checked in project-meta/DECISIONS.md D20):
+//   Cultural Society — blue backdrop  -> warm orange, near-complementary
+//   Media            — pink backdrop  -> warm gold, editorial pairing
+//   Student Council   — red backdrop   -> teal, true color-wheel complement
+// A club with no entry here falls back to site.accent (see build.js) — no
+// per-member override exists any more.
+const CLUB_THEMES = {
+  'Cultural Society': { bg: 'cultural-society.jpg', accent: '#F4A261' },
+  Media: { bg: 'media.jpg', accent: '#E8A33D' },
+  'Student Council': { bg: 'student-council.jpg', accent: '#2E9E8A' },
 };
 
+export function clubTheme(member) {
+  return CLUB_THEMES[member.club] ?? null;
+}
+
 export function clubBackgroundUrl(member, assetsPath = '../assets/') {
-  const file = CLUB_BACKGROUNDS[member.club];
-  return file ? `${assetsPath}clubs/${file}` : null;
+  const theme = clubTheme(member);
+  return theme ? `${assetsPath}clubs/${theme.bg}` : null;
 }
 
 export function avatarMarkup(member, { fullBleed = false, assetsPath = '../assets/' } = {}) {
