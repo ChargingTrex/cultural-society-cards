@@ -396,3 +396,10 @@ where the rail becomes a sticky sidebar) rather than the 640px tablet step.
 25% over their 640px values — scaled together so the card grows
 proportionally rather than just gaining whitespace. Mobile and the 640px
 tablet step are untouched.
+
+### D34 — Profile pic and rail text enlarged
+**Decided (2026-09-14):** `--avatar` 108px->132px (mobile), 128px->155px
+(640px+); `--t-display` (the name) clamp raised 2-2.6rem -> 2.3-3.1rem;
+`--t-label` (the role/club line) 0.75rem->0.875rem. Bio text size left
+alone — wasn't mentioned and enlarging body copy has a real legibility
+tradeoff at longer lengths that name/role/avatar don't.
