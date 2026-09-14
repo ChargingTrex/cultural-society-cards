@@ -244,3 +244,15 @@ theme (`src/index.js`), with the same white-text-on-dark-photo treatment
 already used on the individual page (D19). Dance Club/Fine Arts Club cards
 stay plain (`background: var(--card)`) since neither has a defined theme —
 consistent with how their individual pages already behave.
+
+### D22 — Club accents recomputed as the background photo's true complement
+D20 picked gold for Media by eye ("editorial pairing"), not by actually
+computing pink's complement — asked to fix that for all three clubs.
+**Decided (2026-09-14):** sampled each cropped background's real average hue
+in Python (skipping near-black pixels, which otherwise skew the average) and
+took the exact 180°-rotated complement, rather than eyeballing:
+- Cultural Society: avg hue 215° (blue) -> complement 35° — already `#F4A261`, no change needed
+- Media: avg hue 335° (pink/magenta) -> complement 155° (jade green), not gold — changed to `#34B87F`
+- Student Council: avg hue 360°/0° (red) -> complement 180° (cyan-teal) — changed from `#2E9E8A` (165°) to `#2AA9C7` (~193°), closer to the true complement and further from Media's green so the two clubs stay visually distinct
+All three re-verified for contrast (6.2-7.4:1 against dark ink, comfortably
+past 4.5:1).
