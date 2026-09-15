@@ -23,7 +23,7 @@
   --gap: 12px;
   --tile-pad: 16px;
   --chip: 40px;
-  --avatar: 132px;
+  --avatar: 264px;
   --chip-mix: 14%;
 
   --c-instagram: #E1306C;
@@ -48,7 +48,7 @@
 }
 
 @media (min-width: 640px) {
-  :root { --gap: 16px; --tile-pad: 20px; --avatar: 155px; }
+  :root { --gap: 16px; --tile-pad: 20px; --avatar: 310px; }
 }
 
 @media (prefers-color-scheme: dark) {

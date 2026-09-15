@@ -421,6 +421,15 @@ holds.
   it now reads as a normal-height tile rather than empty space padded out
   to a square.
 
+### D38 — Profile pic doubled
+**Decided (2026-09-15):** `--avatar` 132px->264px (mobile), 155px->310px
+(640px+). Everything sized off `--avatar` (the 50:85 aspect box, the blob
+accent behind it, the initials-fallback font size) scales with it
+automatically — no other rule needed changing. At 960px+ the rail column
+is still a fixed 320px, so the new 310px avatar fits with only a few
+pixels to spare; not widened since it still fits without clipping or
+overlapping the tile grid.
+
 ---
 
 ## OPEN
